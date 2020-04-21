@@ -15,19 +15,16 @@ def ipCheck(candidateIPString):
 serialData = open ('jsonData', "r")
 data = json.load(serialData)
 
-recordCount = len(data)
-loopCount = 0
-while loopCount < recordCount:
-    candidateIPString = (data[loopCount]['lanIp'])
-    deviceSerialNumber = (data[loopCount]["serial"])
+
+
+for record in data:
+    candidateIPString = record['lanIp']
+    deviceSerialNumber = record["serial"]
     if ipCheck(candidateIPString) == True:
         print(f"{candidateIPString} is a Valid IP Address for Serial {deviceSerialNumber}")
     else:
         print(f"{candidateIPString} is Not a Valid IP Address for Serial {deviceSerialNumber}")
 
-
-
-    loopCount = loopCount + 1
 
 
 
